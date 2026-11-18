@@ -1,12 +1,62 @@
-# React + Vite
+# Dr. Adrián Fernández — Urólogo en Guadalajara
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio del **Dr. Adrián Fernández Arzate**, urólogo en Guadalajara: especialidades, sobre el doctor y contacto. Dominio: <https://urologoadrianfernandez.com>.
 
-Currently, two official plugins are available:
+**Stack:** React 19 (JavaScript) + Vite 6 + Tailwind CSS 3 + React Router 7.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requisitos
 
-## Expanding the ESLint configuration
+- Node.js 20.19 o superior (recomendado 22 LTS) y npm.
+- Git.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Instalación
+
+```bash
+git clone https://github.com/PrimerotuwebTeam/urologoadrianfernandez-web.git
+cd urologoadrianfernandez-web
+npm install
+```
+
+## Ejecutar en local
+
+```bash
+npm run dev
+```
+
+Vite levanta el sitio en <http://localhost:5173> con recarga en caliente.
+
+## Scripts
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Compila a `dist/` |
+| `npm run lint` | ESLint |
+| `npm run preview` | Sirve el build en local |
+
+## Estructura
+
+- `src/pages/` — `mainpage`, `specialties`, `aboutUs`, `contact`.
+- `src/routes/` — definición de rutas.
+- `src/components/` — componentes compartidos.
+- `public/` — imágenes, SEO y `.htaccess`.
+
+## Despliegue
+
+El sitio es estático: `npm run build` genera la carpeta `dist/` y ese contenido es lo que se publica en **urologoadrianfernandez.com** (hosting compartido tipo Hostinger/Apache).
+
+1. Compila:
+
+   ```bash
+   npm run build
+   ```
+
+2. Prueba el build en local (opcional): `npm run preview`.
+3. Sube **el contenido** de `dist/` (no la carpeta `dist` en sí) a `public_html/` del dominio, por el Administrador de archivos de hPanel o por FTP.
+4. Comprueba que se subió el `.htaccess` (es un archivo oculto y algunos clientes FTP lo omiten). Viene de `public/.htaccess`, Vite lo copia a `dist/` y es el que hace que las rutas internas no den 404 al recargar.
+
+El repositorio no tiene despliegue automático: cada publicación es un build y una subida manual.
+
+## Ramas
+
+La rama por defecto en GitHub es `master` (publicado). Se trabaja en `develop` y se fusiona a `master` para publicar.
